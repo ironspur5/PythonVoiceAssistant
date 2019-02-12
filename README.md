@@ -9,8 +9,9 @@ Steps:
 
 3. Activate python 3.6 environment 
 
-4. Mac: Install brew 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+4. Mac: Install brew
+
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 5. brew install portaudio 
 
