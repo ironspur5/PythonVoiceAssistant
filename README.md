@@ -9,13 +9,19 @@ Steps:
 
 3. Activate python 3.6 environment 
 
-4. Mac: Install brew
+4. Mac: Install brew with following command
 
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-5. brew install portaudio 
+5. Mac: Install portaudio with following command
 
-6. pip install pyaudio
+brew install portaudio 
 
-7. pip install SpeechRecognition
+6. Install pyaudio with following command
+
+pip install pyaudio
+
+7. Install Speech Recognition with following command
+
+pip install SpeechRecognition
 
