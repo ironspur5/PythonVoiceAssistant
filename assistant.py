@@ -3,16 +3,20 @@
 import pyaudio
 import speech_recognition as sr
 from time import ctime
+import time
 import os
-#from gtts import gTTS
+from gtts import gTTS
+from pygame import mixer
 
-'''
 def speak(audioString):
     print(audioString)
     tts = gTTS(text=audioString, lang='en')
     tts.save("audio.mp3")
-    os.system("mpg321 audio.mp3")
-'''
+    #os.system("mpg321 audio.mp3")
+    mixer.init()
+    mixer.music.load("audio.mp3")
+    mixer.music.play()
+
 
 
 def recordAudio():
@@ -39,11 +43,12 @@ def recordAudio():
 
 def jarvis(data):
     if "how are you" in data:
-        #speak("I am fine")
+        speak("I am fine")
+
         print("i am fine")
 
     if "what time is it" in data:
-        #speak(ctime())
+        speak(ctime())
         print(ctime())
 
     if "where is" in data:
@@ -54,7 +59,11 @@ def jarvis(data):
         #os.system("chromium-browser https://www.google.nl/maps/place/" + location + "/&amp;")
 
 
-# initialization time.sleep(2) speak("Hi Frank, what can I do for you?") while 1:
+# initialization
+# while 1:
+time.sleep(2)
+speak("Hi Frank, what can I do for you?")
+time.sleep(2)
 data = recordAudio()
 jarvis(data)
 
