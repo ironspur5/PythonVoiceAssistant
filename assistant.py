@@ -22,7 +22,6 @@ def recordAudio():
     # Record Audio
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Say something!")
         audio = r.listen(source)
 
     # Speech recognition using Google Speech Recognition
@@ -55,19 +54,19 @@ def jarvis(data):
     if "joke" or "jokes" in data:
         response = requests.get('https://official-joke-api.appspot.com/random_joke')
         joke = json.loads(response.text)
-        # print(joke)
-        # print(joke["setup"])
-        # print(joke["punchline"])
         speak(joke["setup"])
         speak(joke["punchline"])
 
 
-# initialization
+# main
 while 1:
-    # time.sleep(1)
-    speak("Hi, what can I do for you?")
-    data = recordAudio()
-    jarvis(data)
+    usrinput = input("Press A to ask me something or B to quit: ")
+    if usrinput == "A":
+        speak("What can I do for you?")
+        data = recordAudio()
+        jarvis(data)
+    elif usrinput == "B":
+        break
 
 
 
