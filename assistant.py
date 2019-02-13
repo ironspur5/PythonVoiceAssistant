@@ -6,17 +6,13 @@ from time import ctime
 import time
 import os
 from gtts import gTTS
-from pygame import mixer
+
 
 def speak(audioString):
     print(audioString)
     tts = gTTS(text=audioString, lang='en')
     tts.save("audio.mp3")
-    #os.system("mpg321 audio.mp3")
-    mixer.init()
-    mixer.music.load("audio.mp3")
-    mixer.music.play()
-
+    os.system("mpg123 audio.mp3")
 
 
 def recordAudio():
@@ -44,28 +40,20 @@ def recordAudio():
 def jarvis(data):
     if "how are you" in data:
         speak("I am fine")
-
-        print("i am fine")
+        print("I am fine")
 
     if "what time is it" in data:
         speak(ctime())
         print(ctime())
 
-    if "where is" in data:
-        data = data.split(" ")
-        location = data[2]
-        print("it is here")
-        #speak("Hold on Frank, I will show you where " + location + " is.")
-        #os.system("chromium-browser https://www.google.nl/maps/place/" + location + "/&amp;")
-
 
 # initialization
-# while 1:
-time.sleep(2)
-speak("Hi Frank, what can I do for you?")
-time.sleep(2)
-data = recordAudio()
-jarvis(data)
+while 1:
+    time.sleep(1)
+    speak("Hi, what can I do for you?")
+    data = recordAudio()
+    jarvis(data)
+
 
 
 
