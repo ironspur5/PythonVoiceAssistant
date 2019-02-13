@@ -6,6 +6,9 @@ from time import ctime
 import time
 import os
 from gtts import gTTS
+import webbrowser
+import requests
+import json
 
 
 def speak(audioString):
@@ -42,14 +45,26 @@ def jarvis(data):
         speak("I am fine")
         print("I am fine")
 
-    if "what time is it" in data:
+    if "time" or "date" in data:
         speak(ctime())
         print(ctime())
+
+    if "news" in data:
+        webbrowser.open('https://news.google.com')
+
+    if "joke" or "jokes" in data:
+        response = requests.get('https://official-joke-api.appspot.com/random_joke')
+        joke = json.loads(response.text)
+        # print(joke)
+        # print(joke["setup"])
+        # print(joke["punchline"])
+        speak(joke["setup"])
+        speak(joke["punchline"])
 
 
 # initialization
 while 1:
-    time.sleep(1)
+    # time.sleep(1)
     speak("Hi, what can I do for you?")
     data = recordAudio()
     jarvis(data)
