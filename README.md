@@ -1,35 +1,38 @@
 # PythonVoiceAssistant
 Final Project for UT Austin EE 108S Intro to Python 
 
-Steps:
+**Environment:** 
+
+MacOS 10.14.13
+
+Anaconda 
+
+Python 3.6
+
+**Steps:**
 
 1.Create Google Cloud Platform account and activate a cloud speech to text API .JSON key
 
-2.Create python 3.6 environment in anaconda
+2.Create Python 3.6 environment in Anaconda
 
-3.Activate python 3.6 environment 
+3.Activate Python 3.6 environment and verify it is active with * icon next to it
 
-4.Mac: Install brew with following command
+    conda activate py36
+    conda env list
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+4.Install dependencies with following pip command (change path/to/ accordingly)
 
-5.Mac: Install portaudio with following command
+    pip install -r /path/to/requirements.txt 
 
-brew install portaudio 
+5.Mac only: Install Homebrew with following command
 
-6.Install pyaudio with following command
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-pip install pyaudio
+6.Install Portaudio with following command
+ 
+    brew install portaudio 
 
-7.Install Speech Recognition with following command
+7.Install mpg123 
 
-pip install SpeechRecognition
-
-8.Install Google Text to Speech
-
-pip install gTTs
-
-9.Install mpg123 
-
-brew install mpg123
+    brew install mpg123
 
