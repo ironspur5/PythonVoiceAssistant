@@ -1,14 +1,14 @@
 # Patrick Guha
 
-import pyaudio
 import speech_recognition as sr
 from datetime import datetime
 import time
 import os
 from gtts import gTTS
 import webbrowser
-import requests
-import json
+# import requests
+# import json
+from tkinter import *
 
 
 def speak(audioString):
@@ -41,16 +41,25 @@ def recordAudio():
 def jarvis(data):
     if "how are you" in data:
         speak("I am fine")
+        LABEL = Label(ROOT, text="I am fine")
+        LABEL.pack()
 
     if "time" in data:
         tm = datetime.now()
         speak(tm.strftime("%I:%M%p"))
+        LABEL = Label(ROOT, text=tm.strftime("%I:%M%p"))
+        LABEL.pack()
 
     if "date" in data:
         now = datetime.now()
         speak(now.strftime("%A,%d %B,%Y"))
+        LABEL = Label(ROOT, text=now.strftime("%A,%d %B,%Y"))
+        LABEL.pack()
 
     if "news" in data:
+        speak("Coming right up")
+        LABEL = Label(ROOT, text="Coming right up")
+        LABEL.pack()
         webbrowser.open('https://news.google.com')
 
     # adding the joke part always says a joke and messes up
@@ -67,15 +76,36 @@ def jarvis(data):
         data = data.split(" ")
         location = data[2]
         speak("Hold on, I will show you where " + location + " is.")
+        LABEL = Label(ROOT, text="Hold on, I will show you where " + location + " is.")
+        LABEL.pack()
 
 
+ROOT = Tk()
+LOOP_ACTIVE = True
+time.sleep(2)
+speak("Hi, what can I do for you?")
+while LOOP_ACTIVE:
+    ROOT.update()
+    data = recordAudio()
+    USER_INPUT = data
+    if USER_INPUT == "exit":
+        ROOT.quit()
+        LOOP_ACTIVE = False
+    else:
+        LABEL = Label(ROOT, text=USER_INPUT)
+        LABEL.pack()
+    jarvis(data)
 
+
+'''
 # initialization
 time.sleep(2)
 speak("Hi, what can I do for you?")
 while 1:
     data = recordAudio()
     jarvis(data)
+'''
+
 
 '''
 while 1:
