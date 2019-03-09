@@ -1,4 +1,4 @@
-# Patrick Guha
+# Patrick Guha, Abel Philips, Mason Valicek
 
 import speech_recognition as sr
 from datetime import datetime
@@ -6,11 +6,8 @@ import time
 import os
 from gtts import gTTS
 import webbrowser
-#import requests
-#import json
+import random
 from tkinter import *
-
-from jokes2csv import retjoke
 
 
 def speak(audioString):
@@ -46,6 +43,12 @@ def jarvis(data):
         #LABEL = Label(ROOT, text="I am fine")
         #LABEL.pack()
 
+    # previously it was if "joke" or "jokes" in data
+    # thus caused the joke case to run every time! Deleting or "jokes" fixed the issue
+    if "joke" in data:
+        speak(setUpline)
+        speak(punchy)
+
     if "time" in data:
         tm = datetime.now()
         speak(tm.strftime("%I:%M%p"))
@@ -63,18 +66,6 @@ def jarvis(data):
         #LABEL = Label(ROOT, text="Coming right up")
         #LABEL.pack()
         webbrowser.open('https://news.google.com')
-
-    # adding the joke part always says a joke and messes up
-    # maybe need to download archive as a json and import to avoid request
-
-    if "joke" or "jokes" in data:
-        #speak(getJoke())
-        #response = requests.get('https://official-joke-api.appspot.com/random_joke')
-        #joke = json.loads(response.text)
-        #speak(joke["setup"])
-        #speak(joke["punchline"])
-
-        speak(retjoke())
 
 
 '''
@@ -95,29 +86,21 @@ while LOOP_ACTIVE:
     jarvis(data)
 '''
 
-
+# get a random number between 0 and 75 to get a random joke
+ranNum = random.randint(0, 75)
+# preload joke before request
+jokeDict = eval(open("dict.txt").read())
+setUpline = jokeDict[ranNum]["setup"]
+punchy = jokeDict[ranNum]["punchline"]
 
 # initialization
 time.sleep(2)
-#response = requests.get('https://official-joke-api.appspot.com/random_joke')
-#joke = json.loads(response.text)
 speak("Hi, what can I do for you?")
 while 1:
     data = recordAudio()
     jarvis(data)
 
 
-
-'''
-while 1:
-    usrinput = input("Press A to ask me something or B to quit: ")
-    if usrinput == "A":
-        speak("What can I do for you?")
-        data = recordAudio()
-        jarvis(data)
-    elif usrinput == "B":
-        break
-'''
 
 
 
