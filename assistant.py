@@ -8,6 +8,7 @@ from gtts import gTTS
 import webbrowser
 import random
 from tkinter import *
+#from weather import getWeather
 
 
 def speak(audioString):
@@ -72,6 +73,11 @@ def jarvis(data):
         #LABEL = Label(ROOT, text="Coming right up")
         #LABEL.pack()
         webbrowser.open('https://news.google.com')
+
+    '''
+    if "weather" in data:
+            speak(str(getWeather()))
+    '''
 
 
 '''
