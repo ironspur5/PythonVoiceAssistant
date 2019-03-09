@@ -46,18 +46,24 @@ def jarvis(data):
     # previously it was if "joke" or "jokes" in data
     # thus caused the joke case to run every time! Deleting or "jokes" fixed the issue
     if "joke" in data:
+        # get a random number between 0 and 75 to get a random joke
+        ranNum = random.randint(0, 75)
+        # preload joke before request
+        jokeDict = eval(open("dict.txt").read())
+        setUpline = jokeDict[ranNum]["setup"]
+        punchy = jokeDict[ranNum]["punchline"]
         speak(setUpline)
         speak(punchy)
 
     if "time" in data:
         tm = datetime.now()
-        speak(tm.strftime("%I:%M%p"))
+        speak("The time is " + tm.strftime("%I:%M%p"))
         #LABEL = Label(ROOT, text=tm.strftime("%I:%M%p"))
         #LABEL.pack()
 
     if "date" in data:
         now = datetime.now()
-        speak(now.strftime("%A,%d %B,%Y"))
+        speak("Today is " + now.strftime("%A,%d %B,%Y"))
         #LABEL = Label(ROOT, text=now.strftime("%A,%d %B,%Y"))
         #LABEL.pack()
 
@@ -86,12 +92,7 @@ while LOOP_ACTIVE:
     jarvis(data)
 '''
 
-# get a random number between 0 and 75 to get a random joke
-ranNum = random.randint(0, 75)
-# preload joke before request
-jokeDict = eval(open("dict.txt").read())
-setUpline = jokeDict[ranNum]["setup"]
-punchy = jokeDict[ranNum]["punchline"]
+
 
 # initialization
 time.sleep(2)
