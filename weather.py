@@ -28,10 +28,10 @@ def getWeather():
     df = pandas.DataFrame(l)
     #print(df.temp.loc[[0]] + " " + df.desc.loc[[0]])
 
-    response = "It is " + df.desc.loc[[0]] + ". The temperature is " + df.temp.loc[[0]]
+    response = "It is " + df.at[0, "desc"] + ". The temperature is " + df.at[0, "temp"]
 
-    #print(response)
+    print(response)
 
     return str(response)
 
-#getWeather()
+getWeather()
