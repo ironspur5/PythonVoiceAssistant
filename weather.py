@@ -30,8 +30,8 @@ def getWeather():
 
     response = "It is " + df.at[0, "desc"] + ". The temperature is " + df.at[0, "temp"]
 
-    print(response)
+    #print(response)
 
     return str(response)
 
-getWeather()
+#getWeather()
